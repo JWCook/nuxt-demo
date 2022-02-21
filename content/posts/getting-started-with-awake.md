@@ -11,6 +11,8 @@ Awake is a Nuxt.js template for generating a beautifully robust static site with
 
 # Features
 
+* TEST POST
+* Also a test post
 * Simple modern design based on the Bulma css framework (with unused css purged via [purgecss](https://www.purgecss.com/))
 * Site search
 * Statically generated API for posts and categories
