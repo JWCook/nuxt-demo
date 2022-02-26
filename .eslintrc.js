@@ -5,23 +5,20 @@ module.exports = {
     node: true
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: '@babel/eslint-parser',
+    requireConfigFile: false
   },
   extends: [
     'prettier',
-    'prettier/vue',
     'plugin:prettier/recommended',
-    '@nuxtjs',
     'plugin:nuxt/recommended'
   ],
-  plugins: [
-    'prettier'
-  ],
+  plugins: ['prettier'],
   // add your custom rules here
   rules: {
-    "no-console": "off",
-    "vue/no-v-html": "off",
-    "vue/html-self-closing": "off",
-    "nuxt/no-timing-in-fetch-data": "off"
+    'no-console': 'off',
+    'vue/no-v-html': 'off',
+    'vue/html-self-closing': 'off',
+    'nuxt/no-timing-in-fetch-data': 'off'
   }
 }

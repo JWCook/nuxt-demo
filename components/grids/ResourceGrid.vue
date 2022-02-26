@@ -26,7 +26,6 @@ export default {
   name: 'ResourceGrid',
   components: { PresentationalGrid },
   props: {
-    // eslint-disable-next-line vue/require-prop-types
     resource: { required: true },
     theme: { type: String, default: 'blocks' },
     perRow: { type: Number, default: 3 },

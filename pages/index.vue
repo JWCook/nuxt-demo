@@ -14,9 +14,7 @@
         <!-- All Posts -->
         <posts-grid />
       </template>
-      <template v-slot:sidebar>
-        Nothing here
-      </template>
+      <template v-slot:sidebar> Nothing here </template>
     </main-section>
     <news-letter-form-modal />
   </div>
