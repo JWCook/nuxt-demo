@@ -15,9 +15,19 @@ $ npm run generate
 
 
 ## Reference
-* https://github.com/danielkellyio/awake-template
+### Template
+* Repo: https://github.com/danielkellyio/awake-template
+* Demo: https://awake-template.netlify.app/
+
+### Nuxt.js
 * https://nuxtjs.org/docs/directory-structure
 * https://nuxtjs.org/guide/routing
 * https://nuxtjs.org/guide/plugins
 * https://nuxtjs.org/guide/views
 * https://nuxtjs.org/guide/assets#webpacked
+* https://purgecss.com/configuration.html
+
+### Markup
+* https://github.com/markdown-it/markdown-it
+* https://spec.commonmark.org/0.30/
+* Example: https://github.com/danielkellyio/awake-template/blob/master/content/posts/post-markup-and-formatting.md
