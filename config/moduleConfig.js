@@ -1,5 +1,7 @@
 import URL from 'url-parse'
 import siteConfig from './_siteConfig'
+
+// Axios module configuration; see https://axios.nuxtjs.org/options
 let url = false
 let axiosSettings = {}
 if (process.env.URL && process.argv[2] === 'generate') {
@@ -9,19 +11,7 @@ if (process.env.URL && process.argv[2] === 'generate') {
   }
 }
 
-export const modules = [
-  // Doc: https://axios.nuxtjs.org/usage
-  '@nuxtjs/axios',
-  '@nuxtjs/eslint-module',
-  '@nuxtjs/style-resources',
-  'nuxt-fontawesome',
-  'nuxt-responsive-loader'
-]
-if (siteConfig.googleAnalytics.on && siteConfig.googleAnalytics.id) {
-  modules.push('@nuxtjs/google-gtag')
-}
-
-export const modulesSettings = {
+const moduleConfig = {
   fontawesome: {
     imports: [
       {
@@ -33,10 +23,6 @@ export const modulesSettings = {
   styleResources: {
     scss: ['./assets/scss/_vars.scss']
   },
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
   axios: axiosSettings,
   responsiveLoader: {
     name: 'uploads/[hash:7]-[width].[ext]',
@@ -50,5 +36,40 @@ export const modulesSettings = {
   },
   'google-gtag': {
     id: siteConfig.googleAnalytics.id
+  },
+  purgeCSS: {
+    paths: ['./components/**/*.vue', './layouts/**/*.vue', './pages/**/*.vue'],
+    css: ['./assets/scss/styles.scss'],
+    whitelist: [
+      'html',
+      'body',
+      'is-1by1',
+      'is-5by4',
+      'is-5by4',
+      'is-4by3',
+      'is-3by2',
+      'is-5by3',
+      'is-16by9',
+      'is-2by1',
+      'is-3by1',
+      'is-4by5',
+      'is-3by4',
+      'is-2by3',
+      'is-3by5',
+      'is-9by16',
+      'nuxt__build_indicator',
+      '__nuxt',
+      'svg',
+      'table',
+      'td',
+      'th',
+      'tr',
+      'tbody',
+      'thead',
+      'tfoot'
+    ],
+    whitelistPatterns: [/theme/g, /spinner-position/, /fa/, /table/g]
   }
 }
+
+export default moduleConfig

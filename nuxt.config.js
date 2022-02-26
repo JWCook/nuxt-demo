@@ -1,43 +1,50 @@
 import path from 'path'
 import glob from 'glob'
 import head from './config/head'
-import { modules, modulesSettings } from './config/modules'
-import plugins from './config/plugins'
-import build from './config/build'
-import css from './config/css'
-import { routeMap, otherRoutes } from './config/generate'
+import moduleConfig from './config/moduleConfig'
+
+export const routeMap = {
+  '': 'posts/*.md',
+  '/categories': 'categories/*.md'
+}
+
+export const otherRoutes = []
 
 export default {
   target: 'static',
-  /*
-   ** Customize the progress-bar color
-   */
   loading: { color: '#fff' },
-
-  /*
-   ** Headers of the page
-   */
   head: head,
   generate: {
     routes: otherRoutes.concat(getDynamicPaths(routeMap))
   },
-  /*
-   ** Global CSS
-   */
-  css: css,
-  /*
-   ** Plugins to load before mounting the App
-   */
-  plugins: plugins,
-  /*
-   ** Nuxt.js modules
-   */
-  modules: modules,
-  ...modulesSettings,
-  /*
-   ** Build configuration
-   */
-  build: build
+  css: ['./assets/scss/styles.scss'],
+  plugins: [
+    '~/plugins/Globals',
+    '~/plugins/OptiImage',
+    '~/plugins/Disqus',
+    '~/plugins/EventBus',
+    '~/plugins/Components'
+  ],
+  modules: [
+    '@nuxtjs/axios', // See https://axios.nuxtjs.org/usage
+    //'@nuxtjs/google-gtag',  // TODO: Set up analytics ID
+    '@nuxtjs/style-resources',
+    'nuxt-fontawesome',
+    'nuxt-responsive-loader'
+  ],
+  buildModules: ['@nuxtjs/eslint-module', 'nuxt-purgecss'],
+  ...moduleConfig,
+  build: {
+    // Extend webpack config
+    extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.md$/,
+        use: [{ loader: 'gray-matter-loader' }]
+      })
+      config.resolve.alias.vue = 'vue/dist/vue.common'
+    },
+    postcss: { plugins: [] }
+  }
 }
 
 /**
