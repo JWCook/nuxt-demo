@@ -1,7 +1,7 @@
 import URL from 'url-parse'
 import siteConfig from './_siteConfig'
 
-// Axios module configuration; see https://axios.nuxtjs.org/options
+// Axios config
 let url = false
 let axiosSettings = {}
 if (process.env.URL && process.argv[2] === 'generate') {
